@@ -1,0 +1,319 @@
+:root {
+    --blue-dark: #103f69;
+    --blue: #1068a6;
+    --yellow: #e5c038;
+    --orange: #e1811f;
+    --white: #fff;
+    --gray: #6b7280;
+    --light-blue: #badeed;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(145deg, var(--blue-dark), var(--blue));
+    color: #1f2937;
+}
+
+/* CONTAINER GERAL */
+.register-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.register-main-content {
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    z-index: 2;
+}
+
+.register-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .register-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}
+
+/* PAINEL ESQUERDO */
+.register-info-panel {
+    color: white;
+    text-align: center;
+}
+
+.register-info-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.register-info-card img {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 1rem;
+}
+
+.register-info-card h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.register-info-card p {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.register-tag-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.register-tag-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.register-icon-yellow {
+    color: var(--yellow);
+}
+
+.register-icon-orange {
+    color: var(--orange);
+}
+
+.register-icon-blue {
+    color: var(--light-blue);
+}
+
+/* FORMULÁRIO */
+.register-form-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.register-card-header {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.register-card-title {
+    color: var(--blue-dark);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.register-card-description {
+    color: var(--gray);
+    font-size: 1rem;
+}
+
+.register-card-content {
+    padding: 1.5rem;
+}
+
+/* INPUTS */
+.register-form-space {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.register-form-group {
+    position: relative;
+}
+
+.register-form-label {
+    color: var(--blue-dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.register-input-wrapper {
+    position: relative;
+}
+
+.register-input-icon {
+    position: absolute;
+    top: 50%;
+    left: 0.8rem;
+    transform: translateY(-50%);
+    color: var(--blue);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.register-password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0.8rem;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    z-index: 2;
+    padding: 0.25rem;
+}
+
+.register-password-toggle:hover {
+    color: var(--blue);
+}
+
+.register-form-input,
+.register-form-select {
+    width: 100%;
+    padding: 0.6rem 2.5rem 0.6rem 2.3rem;
+    border-radius: 6px;
+    border: 1px solid var(--light-blue);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+.register-form-select {
+    padding: 0.6rem 0.75rem;
+    cursor: pointer;
+}
+
+.register-form-input:focus,
+.register-form-select:focus {
+    border-color: var(--blue);
+}
+
+/* BOTÃO */
+.register-submit-button {
+    background: linear-gradient(to right, var(--blue), var(--blue-dark));
+    border: none;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.register-submit-button:hover {
+    background: linear-gradient(to right, var(--blue-dark), var(--blue));
+    transform: translateY(-1px);
+}
+
+/* LINK ESQUECI SENHA */
+.register-forgot-password {
+    text-align: right;
+    margin-top: 0.5rem;
+}
+
+.register-forgot-password a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.register-forgot-password a:hover {
+    color: var(--blue-dark);
+    text-decoration: underline;
+}
+
+/* RODAPÉ */
+.register-form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1rem;
+    color: var(--gray);
+    font-size: 0.85rem;
+}
+
+.register-form-footer p {
+    margin: 0;
+}
+
+.register-form-footer a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.register-form-footer a:hover {
+    color: var(--blue-dark);
+    text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+    .register-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .register-info-panel {
+        order: 2;
+        margin-top: 2rem;
+    }
+
+    .register-info-card img {
+        max-width: 280px;
+    }
+
+    .register-forgot-password {
+        text-align: center;
+    }
+}
+
+/* Mensagens de erro */
+.register-error-message {
+    color: #e74c3c !important;
+    font-size: 0.8rem !important;
+    margin-top: 0.25rem !important;
+    display: block;
+}
+
+/* Estados controlados via JavaScript */
+.register-form-input,
+.register-form-select {
+    border-color: var(--light-blue) !important;
+}
+
+.register-form-input:focus,
+.register-form-select:focus {
+    border-color: var(--blue) !important;
+}
+
+.register-form-input.error,
+.register-form-select.error {
+    border-color: #e74c3c !important;
+}
+
+.register-form-input.valid,
+.register-form-select.valid {
+    border-color: #27ae60 !important;
+}
