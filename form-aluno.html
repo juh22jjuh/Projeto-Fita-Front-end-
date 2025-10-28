@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Aluno - 3ª FITA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
+                
+                <div class="content-wrapper">
+                    <div class="logo-container">
+                        <img src="img/logoFita.png" alt="Logo 3ª FITA">
+                    </div>
+                    
+                    <div class="text-center mb-3">
+                        <h1 class="h3 mb-1 fw-bold">Inscrição - Aluno Fatec</h1>
+                    </div>
+
+                    <div class="step-indicator">
+                        <div class="step active" data-step="1">
+                            <div class="step-icon">1</div>
+                            <div class="step-text">Pessoais</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-icon">2</div>
+                            <div class="step-text">Contato</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-icon">3</div>
+                            <div class="step-text">Acadêmico</div>
+                        </div>
+                    </div>
+
+                    <form id="multiStepForm" action="#" method="POST" novalidate>
+                        
+                        <div class="form-step active">
+                            <h5 class="mb-3 text-center text-muted">Etapa 1: Dados Pessoais</h5>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="nome" placeholder="Nome Completo" required>
+                                <label for="nome">Nome Completo</label>
+                                <div class="invalid-feedback">Campo obrigatório.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="email" placeholder="seu@email.com" required>
+                                <label for="email">Email</label>
+                                <div class="invalid-feedback">Insira um email válido.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="dataNascimento" required>
+                                <label for="dataNascimento">Data de Nascimento</label>
+                                <div class="invalid-feedback">Insira uma data válida.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-step">
+                            <h5 class="mb-3 text-center text-muted">Etapa 2: Contato e Localização</h5>
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" id="telefone" placeholder="(00) 00000-0000" required oninput="this.value = formatPhone(this.value)">
+                                <label for="telefone">Telefone (com DDD)</label>
+                                <div class="invalid-feedback">Insira um telefone válido.</div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="nacionalidade" placeholder="Nacionalidade" required value="Brasileira">
+                                        <label for="nacionalidade">Nacionalidade</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="cidade" placeholder="Cidade" required>
+                                        <label for="cidade">Cidade</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <h5 class="mb-3 text-center text-muted">Etapa 3: Dados Acadêmicos</h5>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="curso" required>
+                                    <option value="" selected disabled>Selecione seu curso...</option>
+                                    <option value="ads">Análise e Desenvolvimento de Sistemas</option>
+                                    <option value="agro">Agronegócio</option>
+                                    <option value="gestao">Gestão Empresarial</option>
+                                    <option value="log">Logística</option>
+                                </select>
+                                <label for="curso">Curso</label>
+                                <div class="invalid-feedback">Selecione seu curso.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="semestre" placeholder="Semestre" min="1" max="10" required>
+                                <label for="semestre">Semestre</label>
+                                <div class="invalid-feedback">Insira um semestre válido (1-10).</div>
+                            </div>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button class="btn btn-fita-secondary" type="button" id="prevBtn">
+                                <i class="bi bi-arrow-left"></i> Anterior
+                            </button>
+                            <button class="btn btn-fita-primary" type="button" id="nextBtn">
+                                Próximo <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="index.html" class="btn btn-link btn-sm">Cancelar Inscrição</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentStep = 0;
+            const form = document.getElementById('multiStepForm');
+            const steps = form.querySelectorAll('.form-step');
+            const indicators = document.querySelectorAll('.step-indicator .step');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+
+            function showStep(stepIndex) {
+                steps.forEach((step, index) => {
+                    step.classList.toggle('active', index === stepIndex);
+                });
+                indicators.forEach((step, index) => {
+                    step.classList.toggle('active', index === stepIndex);
+                    step.classList.toggle('completed', index < stepIndex);
+                });
+                prevBtn.style.display = stepIndex === 0 ? 'none' : 'inline-block';
+                if (stepIndex === steps.length - 1) {
+                    nextBtn.innerHTML = 'Enviar Inscrição <i class="bi bi-check-lg"></i>';
+                    nextBtn.setAttribute('type', 'submit');
+                } else {
+                    nextBtn.innerHTML = 'Próximo <i class="bi bi-arrow-right"></i>';
+                    nextBtn.setAttribute('type', 'button');
+                }
+            }
+
+            function validateStep(stepIndex) {
+                let isValid = true;
+                const currentStepInputs = steps[stepIndex].querySelectorAll('input[required], select[required]');
+                steps[stepIndex].classList.add('was-validated');
+                currentStepInputs.forEach(input => {
+                    if (!input.checkValidity()) {
+                        isValid = false;
+                    }
+                });
+                return isValid;
+            }
+
+            nextBtn.addEventListener('click', (event) => {
+                if (nextBtn.getAttribute('type') === 'button') {
+                    if (validateStep(currentStep)) {
+                        currentStep++;
+                        showStep(currentStep);
+                    }
+                } else {
+                    if (!validateStep(currentStep)) {
+                        event.preventDefault();
+                    }
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                steps[currentStep].classList.remove('was-validated');
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+
+            form.addEventListener('submit', (event) => {
+                if (!validateStep(currentStep)) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    console.log("Formulário enviado!");
+                    // event.preventDefault(); 
+                }
+            });
+
+            showStep(currentStep);
+            
+            const dateField = document.getElementById('dataNascimento');
+            const maxDate = new Date();
+            maxDate.setFullYear(maxDate.getFullYear() - 14);
+            const minDate = new Date();
+            minDate.setFullYear(minDate.getFullYear() - 100);
+            dateField.setAttribute('max', maxDate.toISOString().split('T')[0]);
+            dateField.setAttribute('min', minDate.toISOString().split('T')[0]);
+        });
+
+        function formatPhone(value) {
+            if (!value) return "";
+            value = value.replace(/\D/g,'');
+            value = value.replace(/^(\d{2})(\d)/g,'($1) $2');
+            if (value.length > 13) {
+                value = value.replace(/(\d{5})(\d)/,'$1-$2');
+            } else {
+                value = value.replace(/(\d{4})(\d)/,'$1-$2');
+            }
+            return value.substring(0, 15);
+        }
+    </script>
+</body>
+</html>

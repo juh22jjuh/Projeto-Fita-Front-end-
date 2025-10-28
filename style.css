@@ -1,0 +1,212 @@
+:root {
+    --hot-cinnamon: #e1621b;
+    --tory-blue: #1068a6;
+    --chathams-blue: #103f69;
+    --spindle: #badeed;
+}
+
+html, body { 
+    height: 100%; 
+    min-height: 100%;
+}
+
+body {
+    background: var(--chathams-blue);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.content-wrapper {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-top: 5px solid var(--hot-cinnamon);
+    width: 100%;
+    
+    /* --- ANIMAÇÃO: Fade-in ao carregar a página --- */
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.logo-container { 
+    text-align: center; 
+    margin-bottom: 1.5rem; 
+}
+.logo-container img { 
+    max-width: 250px; 
+    height: auto; 
+}
+
+/* ============================
+   Estilos: index.html (Cards)
+   ============================ */
+
+.logo-container.index-logo img {
+    max-width: 300px;
+}
+
+.registration-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    cursor: pointer;
+}
+
+.registration-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.registration-card .card-icon {
+    font-size: 3.5rem;
+    color: var(--tory-blue);
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.registration-card .card-title {
+    color: var(--chathams-blue);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* ============================
+   Estilos: Formulários
+   ============================ */
+
+/* Indicador de Etapas (Padrão 3 etapas) */
+.step-indicator { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 2rem; 
+    position: relative; 
+}
+.step-indicator::before { 
+    content: ''; 
+    position: absolute; 
+    top: 50%; 
+    left: 0; 
+    width: 100%; 
+    height: 2px; 
+    background-color: #e0e0e0; 
+    transform: translateY(-50%); 
+    z-index: 1; 
+}
+
+/* Modificador para 2 etapas (usado em form-comunidade.html) */
+.step-indicator.steps-2 {
+    max-width: 300px; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.step { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    z-index: 2; 
+    background-color: #fff; /* Adicionado para cobrir a linha */
+    padding: 0 10px; /* Adicionado para cobrir a linha */
+}
+.step-icon { 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    background-color: #e0e0e0; 
+    color: #fff; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-weight: 600; 
+    transition: background-color 0.3s ease; 
+}
+.step-text { 
+    font-size: 0.8rem; 
+    color: #888; 
+    margin-top: 0.5rem; 
+}
+.step.active .step-icon { 
+    background-color: var(--tory-blue); 
+}
+.step.completed .step-icon { 
+    background-color: var(--hot-cinnamon); 
+    color: #fff; 
+}
+.step.completed .step-text { 
+    color: #000; 
+}
+
+/* Etapas do Formulário e Navegação */
+.form-step { 
+    display: none; 
+}
+.form-step.active { 
+    display: block; 
+    /* --- ANIMAÇÃO: Fade-in ao trocar de etapa --- */
+    animation: stepFadeIn 0.4s ease-out forwards;
+}
+.form-navigation { 
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 2rem; 
+}
+
+/* Botões */
+.btn-fita-primary { 
+    background-color: var(--hot-cinnamon); 
+    border-color: var(--hot-cinnamon); 
+    font-weight: 600; 
+    color: #fff; 
+}
+.btn-fita-primary:hover { 
+    background-color: #c95415; 
+    border-color: #c95415; 
+    color: #fff; 
+}
+.btn-fita-secondary { 
+    background-color: #6c757d; 
+    border-color: #6c757d; 
+    font-weight: 600; 
+    color: #fff; 
+}
+.btn-fita-secondary:hover { 
+    background-color: #5a6268; 
+    border-color: #5a6268; 
+    color: #fff; 
+}
+
+
+/* ============================
+   Animações (Keyframes)
+   ============================ */
+
+/* Animação de fade-in para o wrapper principal */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Animação de fade-in para as etapas do formulário */
+@keyframes stepFadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(15px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}

@@ -1,0 +1,180 @@
+/* ============================
+   Estilos de Base (Copiado do style.css)
+   ============================ */
+:root {
+    --hot-cinnamon: #e1621b;
+    --tory-blue: #1068a6;
+    --chathams-blue: #103f69;
+    --spindle: #badeed;
+}
+
+
+body {
+    background: var(--chathams-blue); /* Fundo azul mantido */
+    font-family: 'Poppins', sans-serif;
+    /* display: flex; (REMOVIDO) */
+    /* align-items: center; (REMOVIDO) */
+    /* justify-content: center; (REMOVIDO) */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.content-wrapper {
+    background-color: #ffffff; /* Card branco mantido */
+    border-radius: 12px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-top: 5px solid var(--hot-cinnamon); /* Borda laranja mantida */
+    width: 100%;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.logo-container { 
+    text-align: center; 
+    margin-bottom: 1.5rem; 
+}
+.logo-container img { 
+    max-width: 250px; 
+    height: auto; 
+}
+
+/* Botões (Mantidos) */
+.btn-fita-primary { 
+    background-color: var(--hot-cinnamon); 
+    border-color: var(--hot-cinnamon); 
+    font-weight: 600; 
+    color: #fff; 
+}
+.btn-fita-primary:hover { 
+    background-color: #c95415; 
+    border-color: #c95415; 
+    color: #fff; 
+}
+.btn-fita-secondary { 
+    background-color: #6c757d; 
+    border-color: #6c757d; 
+    font-weight: 600; 
+    color: #fff; 
+}
+.btn-fita-secondary:hover { 
+    background-color: #5a6268; 
+    border-color: #5a6268; 
+    color: #fff; 
+}
+
+/* Animação (Mantida) */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* ============================
+   Estilos: Admin (Atualizados)
+   ============================ */
+
+/* Badges de Tipo (Mantidos) */
+.badge.bg-aluno {
+    background-color: var(--tory-blue) !important;
+}
+.badge.bg-medio {
+    background-color: var(--hot-cinnamon) !important;
+}
+.badge.bg-comunidade {
+    background-color: #6c757d !important; /* Cinza secundário */
+}
+
+/* Filtros (Mantidos) */
+.admin-filters {
+    background-color: #f8f9fa; /* Um cinza bem claro */
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+/* Ajusta o foco dos formulários (Mantido) */
+.form-control:focus, .form-select:focus {
+    border-color: var(--spindle);
+    box-shadow: 0 0 0 0.25rem rgba(16, 104, 166, 0.25);
+}
+
+/* Paginação (Mantida) */
+.pagination .page-item.active .page-link {
+    background-color: var(--hot-cinnamon);
+    border-color: var(--hot-cinnamon);
+}
+.pagination .page-link {
+    color: var(--tory-blue);
+}
+
+
+/* --- NOVOS ESTILOS PARA A LISTA --- */
+.list-group-item h5 {
+    color: var(--chathams-blue); /* Cor do título */
+    font-weight: 600;
+}
+
+.list-group-item p {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.list-group-item .list-actions {
+    text-align: right;
+    margin-top: 0.75rem;
+}
+
+/* Remove a borda de cima do primeiro item e de baixo do último */
+.list-group {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+.list-group-item {
+    border-left: none;
+    border-right: none;
+    padding: 1.25rem;
+}
+.list-group-item:first-child {
+    border-top: none;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.list-group-item:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+
+/* --- ADIÇÃO PARA RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 767.98px) {
+    /* Ajusta o padding do wrapper no mobile */
+    .content-wrapper {
+        padding: 1.5rem 1rem;
+    }
+
+    /* Centraliza o badge e dá padding */
+    .badge.rounded-pill {
+        text-align: center;
+        padding-top: .5em;
+        padding-bottom: .5em;
+    }
+
+    /* Alinha os botões à esquerda no mobile */
+    .list-group-item .list-actions {
+        text-align: left;
+        margin-top: 1rem;
+        display: flex;
+        gap: 0.5rem; /* Espaço entre os botões */
+    }
+
+    /* Faz os botões crescerem para preencher o espaço */
+    .list-group-item .list-actions .btn {
+        flex-grow: 1; /* Faz os botões ocuparem o espaço dividido */
+    }
+}
