@@ -150,6 +150,107 @@ body {
     border-bottom-right-radius: 7px;
 }
 
+.nav-tabs {
+    border-bottom-color: var(--spindle);
+}
+.nav-tabs .nav-link {
+    color: var(--tory-blue); /* Cor azul padrão da aba */
+    font-weight: 500;
+}
+.nav-tabs .nav-link:hover {
+    border-color: var(--spindle) var(--spindle) var(--spindle);
+    color: var(--chathams-blue);
+}
+.nav-tabs .nav-link.active {
+    font-weight: 600;
+    border-color: var(--spindle) var(--spindle) #fff;
+    border-bottom: 3px solid var(--hot-cinnamon); /* Destaque laranja na aba ativa */
+    color: var(--hot-cinnamon);
+}
+
+/* --- Estilos para Cards de Gráfico --- */
+.chart-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    height: 100%;
+    min-height: 400px; /* Garante altura mínima */
+    display: flex;
+    flex-direction: column;
+}
+.chart-card h5 {
+    color: var(--chathams-blue);
+    margin-bottom: 1.5rem;
+}
+.chart-container {
+    position: relative;
+    flex-grow: 1; /* Faz o gráfico ocupar o espaço disponível */
+    width: 100%;
+    height: 100%;
+}
+
+/* ============================
+   Estilos: KPI Cards (NOVO)
+   ============================ */
+
+.kpi-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    border: 1px solid #eee;
+    height: 100%;
+}
+
+.kpi-icon {
+    font-size: 2.2rem;
+    margin-right: 1.25rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Impede que o ícone encolha */
+}
+
+/* Cores dos ícones baseadas nas variáveis */
+.kpi-icon.blue {
+    background-color: var(--tory-blue);
+}
+.kpi-icon.orange {
+    background-color: var(--hot-cinnamon);
+}
+.kpi-icon.gray {
+    background-color: #6c757d;
+}
+
+.kpi-text h3 {
+    margin: 0;
+    font-size: 2.1rem;
+    color: var(--chathams-blue);
+    line-height: 1.1;
+}
+.kpi-text span {
+    font-size: 0.9rem;
+}
+
+/* Ajuste fino para telas menores (como tablet) */
+@media (max-width: 991.98px) {
+    .kpi-icon {
+        font-size: 1.8rem;
+        width: 50px;
+        height: 50px;
+        margin-right: 1rem;
+    }
+    .kpi-text h3 {
+        font-size: 1.8rem;
+    }
+}
 
 /* --- ADIÇÃO PARA RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 767.98px) {
