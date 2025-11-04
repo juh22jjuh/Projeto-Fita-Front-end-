@@ -48,7 +48,7 @@ FITA-Feira-Agronegocio/
 git clone https://github.com/juh22jjuh/Projeto-Fita-Front-end-.git
 
 # Acesse a pasta do projeto
-cd pasta do proejto
+cd pasta do projeto
 
 # Abra o arquivo principal no navegador
 # No Windows:

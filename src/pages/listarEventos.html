@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3ª FITA - Eventos</title>
+    <link rel="stylesheet" href="../css/pages/listarEventos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="header-container"></div>
+
+    <header class="events-hero-section">
+        <h1>Eventos em Destaque</h1>
+        <p>Descubra palestras, workshops e encontros incríveis perto de você.</p>
+    </header>
+
+    <main class="events-main-container">
+        <section class="events-filters">
+            <div class="filters-container">
+                <!-- Filtro por Tipo - Layout Horizontal -->
+                <div class="filter-group horizontal-filters">
+                    <label class="filter-label">Filtrar por Tipo:</label>
+                    <div class="checkbox-filters-horizontal">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="tipo-evento" value="todos" checked>
+                            <span>Todos</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="tipo-evento" value="minicurso">
+                            <span>Minicurso</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="tipo-evento" value="palestra">
+                            <span>Palestra</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="tipo-evento" value="curso">
+                            <span>Curso</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="tipo-evento" value="abertura">
+                            <span>ABERTURA</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="tipo-evento" value="encerramento">
+                            <span>ENCERRAMENTO</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Filtros de Data e Busca - Layout Horizontal -->
+                <div class="filter-group-row">
+                    <div class="filter-group">
+                        <label for="filtro-data">Filtrar por Data:</label>
+                        <select id="filtro-data">
+                            <option value="todos">Todas as Datas</option>
+                            <option value="2025-11-12">12/11/2025</option>
+                            <option value="2025-11-20">20/11/2025</option>
+                            <option value="2025-11-25">25/11/2025</option>
+                            <option value="2025-11-30">30/11/2025</option>
+                            <option value="2025-12-01">01/12/2025</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="busca">Pesquisa:</label>
+                        <div class="search-container">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="busca" placeholder="Buscar evento..." />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="events-list" class="events-list">
+            <div class="event-card" data-tipo="minicurso" data-data="2025-11-12" data-id="1">
+                <div class="event-status-badge"></div>
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Workshop de Tecnologia" />
+                <div class="event-info">
+                    <h2>Workshop de Tecnologia</h2>
+                    <p class="event-professor">Prof. Dr. Carlos Silva</p>
+                    <p>Aprenda sobre inovação e startups com especialistas.</p>
+                    <span class="event-meta">
+                        <i class="fas fa-calendar"></i> 12/11/2025 • 
+                        <i class="fas fa-clock"></i> 14:00 - 17:00
+                    </span>
+                    <div class="event-footer">
+                        <span class="event-category minicurso">
+                            <i class="fas fa-graduation-cap"></i>
+                            Minicurso
+                        </span>
+                        <span class="vagas-count">38/40 vagas</span>
+                    </div>
+                    <button class="event-subscribe-btn" data-event-id="1">Inscrever-se</button>
+                </div>
+            </div>
+
+            <div class="event-card" data-tipo="palestra" data-data="2025-11-20" data-id="2">
+                <div class="event-status-badge"></div>
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Palestra sobre Saúde Mental" />
+                <div class="event-info">
+                    <h2>Palestra sobre Saúde Mental</h2>
+                    <p class="event-professor">Dra. Ana Oliveira</p>
+                    <p>Entenda a importância do equilíbrio emocional no trabalho.</p>
+                    <span class="event-meta">
+                        <i class="fas fa-calendar"></i> 20/11/2025 • 
+                        <i class="fas fa-clock"></i> 19:00 - 21:00
+                    </span>
+                    <div class="event-footer">
+                        <span class="event-category palestra">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            Palestra
+                        </span>
+                        <span class="vagas-count">40/40 vagas</span>
+                    </div>
+                    <button class="event-subscribe-btn" data-event-id="2" disabled>Esgotado</button>
+                </div>
+            </div>
+
+            <div class="event-card" data-tipo="curso" data-data="2025-11-25" data-id="3">
+                <div class="event-status-badge"></div>
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Seminário de Educação Digital" />
+                <div class="event-info">
+                    <h2>Seminário de Educação Digital</h2>
+                    <p class="event-professor">Prof. Marcos Santos</p>
+                    <p>Transformação das salas de aula com ferramentas online.</p>
+                    <span class="event-meta">
+                        <i class="fas fa-calendar"></i> 25/11/2025 • 
+                        <i class="fas fa-clock"></i> 09:00 - 12:00
+                    </span>
+                    <div class="event-footer">
+                        <span class="event-category curso">
+                            <i class="fas fa-book"></i>
+                            Curso
+                        </span>
+                        <span class="vagas-count">25/40 vagas</span>
+                    </div>
+                    <button class="event-subscribe-btn" data-event-id="3">Inscrever-se</button>
+                </div>
+            </div>
+
+            <div class="event-card" data-tipo="abertura" data-data="2025-11-30" data-id="4">
+                <div class="event-status-badge"></div>
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Hackathon de Startups" />
+                <div class="event-info">
+                    <h2>Hackathon de Startups</h2>
+                    <p class="event-professor">Mentor: João Pereira</p>
+                    <p>48 horas para criar soluções inovadoras em equipe!</p>
+                    <span class="event-meta">
+                        <i class="fas fa-calendar"></i> 30/11/2025 • 
+                        <i class="fas fa-clock"></i> 08:00 - 20:00
+                    </span>
+                    <div class="event-footer">
+                        <span class="event-category abertura">
+                            <i class="fas fa-door-open"></i>
+                            ABERTURA
+                        </span>
+                        <span class="vagas-count">15/40 vagas</span>
+                    </div>
+                    <button class="event-subscribe-btn" data-event-id="4">Inscrever-se</button>
+                </div>
+            </div>
+
+            <div class="event-card" data-tipo="encerramento" data-data="2025-12-01" data-id="5">
+                <div class="event-status-badge"></div>
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Cerimônia de Encerramento" />
+                <div class="event-info">
+                    <h2>Cerimônia de Encerramento</h2>
+                    <p class="event-professor">Organização 3ª FITA</p>
+                    <p>Premiação e agradecimentos aos participantes e patrocinadores.</p>
+                    <span class="event-meta">
+                        <i class="fas fa-calendar"></i> 01/12/2025 • 
+                        <i class="fas fa-clock"></i> 18:00 - 20:00
+                    </span>
+                    <div class="event-footer">
+                        <span class="event-category encerramento">
+                            <i class="fas fa-door-closed"></i>
+                            ENCERRAMENTO
+                        </span>
+                        <span class="vagas-count">120/200 vagas</span>
+                    </div>
+                    <button class="event-subscribe-btn" data-event-id="5">Inscrever-se</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./../components/layout/header/headerLoader.js"></script>
+    <script src="../js/pages/listarEventos.js"></script>
+</body>
+</html>

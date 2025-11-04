@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recuperar Senha - 3ª FITA</title>
+    <link rel="stylesheet" href="/src/css/pages/auth.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Recuperar Senha</h1>
+                <p>Digite seu email para redefinir sua senha</p>
+            </div>
+
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <div class="input-container">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="seu.email@exemplo.com" 
+                            required
+                        />
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-btn">
+                    Enviar Link de Recuperação
+                </button>
+
+                <div class="auth-footer">
+                    <a href="/index.html" class="auth-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Voltar para o login
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
