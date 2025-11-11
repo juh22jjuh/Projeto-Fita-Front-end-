@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário - 3ª FITA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/pages/perfil.css">
+</head>
+<body>
+    <div class="perfil-container">
+        <div class="perfil-header">
+            <div class="perfil-logo">
+                <h1>3ª FITA</h1>
+                <p>Feira Industrial, Tecnológica e do Agronegócio</p>
+            </div>
+            <a href="/index.html" class="perfil-back-btn">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+        </div>
+
+        <div class="perfil-content">
+            <div class="perfil-card">
+                <div class="perfil-card-header">
+                    <h2>Meu Perfil</h2>
+                    <p>Atualize suas informações pessoais</p>
+                </div>
+
+                <div class="perfil-card-body">
+                    <!-- Foto de Perfil -->
+                    <div class="perfil-picture-section">
+                        <div class="perfil-picture-container">
+                            <img id="perfil-picture" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='20' fill='%23103f69'/%3E%3Ccircle cx='50' cy='100' r='40' fill='%23103f69'/%3E%3C/svg%3E" 
+                                 alt="Foto de perfil" class="perfil-picture">
+                            <div class="perfil-picture-overlay">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <input type="file" id="perfil-picture-input" accept="image/*" class="perfil-picture-input">
+                        </div>
+                        <button type="button" id="change-picture-btn" class="perfil-change-picture-btn">
+                            Alterar Foto
+                        </button>
+                    </div>
+
+                    <!-- Mensagens -->
+                    <div id="perfil-message-container" class="perfil-message-container" style="display: none;"></div>
+
+                    <form id="perfil-form" class="perfil-form">
+                        <!-- Informações Pessoais -->
+                        <div class="perfil-section">
+                            <h3 class="perfil-section-title">Informações Pessoais</h3>
+                            
+                            <div class="perfil-form-group">
+                                <label for="name" class="perfil-form-label">Nome Completo</label>
+                                <div class="perfil-input-wrapper">
+                                    <i class="fas fa-user perfil-input-icon"></i>
+                                    <input type="text" id="name" name="name" class="perfil-form-input" 
+                                           placeholder="Seu nome completo" value="João da Silva">
+                                </div>
+                                <span class="perfil-error-message" id="name-error"></span>
+                            </div>
+
+                            <div class="perfil-form-group">
+                                <label for="email" class="perfil-form-label">Email</label>
+                                <div class="perfil-input-wrapper">
+                                    <i class="fas fa-envelope perfil-input-icon"></i>
+                                    <input type="email" id="email" name="email" class="perfil-form-input" 
+                                           placeholder="seu.email@exemplo.com" value="joao.silva@exemplo.com">
+                                </div>
+                                <span class="perfil-error-message" id="email-error"></span>
+                            </div>
+
+                            <div class="perfil-form-group">
+                                <label for="phone" class="perfil-form-label">Telefone</label>
+                                <div class="perfil-input-wrapper">
+                                    <i class="fas fa-phone perfil-input-icon"></i>
+                                    <input type="tel" id="phone" name="phone" class="perfil-form-input" 
+                                           placeholder="(00) 00000-0000" value="(11) 99999-9999">
+                                </div>
+                                <span class="perfil-error-message" id="phone-error"></span>
+                            </div>
+                        </div>
+
+                        <!-- Senha -->
+                        <div class="perfil-section">
+                            <h3 class="perfil-section-title">Segurança</h3>
+                            <div class="perfil-password-info">
+                                <p>Sua senha atual está configurada</p>
+                                <button type="button" id="change-password-btn" class="perfil-change-password-btn">
+                                    Alterar Senha
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="perfil-submit-button">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Alteração de Senha -->
+    <div id="perfil-password-modal" class="perfil-modal">
+        <div class="perfil-modal-content">
+            <div class="perfil-modal-header">
+                <h3>Alterar Senha</h3>
+                <button type="button" id="perfil-password-modal-close" class="perfil-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="perfil-password-form" class="perfil-password-form">
+                <div class="perfil-form-group">
+                    <label for="modal-current-password" class="perfil-form-label">Senha Atual</label>
+                    <div class="perfil-input-wrapper">
+                        <i class="fas fa-lock perfil-input-icon"></i>
+                        <input type="password" id="modal-current-password" name="current-password" 
+                               class="perfil-form-input" placeholder="Sua senha atual">
+                        <button type="button" class="perfil-password-toggle">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="perfil-error-message" id="modal-current-password-error"></span>
+                </div>
+
+                <div class="perfil-form-group">
+                    <label for="modal-new-password" class="perfil-form-label">Nova Senha</label>
+                    <div class="perfil-input-wrapper">
+                        <i class="fas fa-lock perfil-input-icon"></i>
+                        <input type="password" id="modal-new-password" name="new-password" 
+                               class="perfil-form-input" placeholder="Nova senha">
+                        <button type="button" class="perfil-password-toggle">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="perfil-error-message" id="modal-new-password-error"></span>
+                </div>
+
+                <div class="perfil-form-group">
+                    <label for="modal-confirm-password" class="perfil-form-label">Confirmar Nova Senha</label>
+                    <div class="perfil-input-wrapper">
+                        <i class="fas fa-lock perfil-input-icon"></i>
+                        <input type="password" id="modal-confirm-password" name="confirm-password" 
+                               class="perfil-form-input" placeholder="Confirmar nova senha">
+                        <button type="button" class="perfil-password-toggle">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="perfil-error-message" id="modal-confirm-password-error"></span>
+                </div>
+
+                <div class="perfil-modal-actions">
+                    <button type="button" id="perfil-password-cancel" class="perfil-modal-cancel-btn">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="perfil-modal-confirm-btn">
+                        Alterar Senha
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Sucesso -->
+    <div id="perfil-success-modal" class="perfil-modal">
+        <div class="perfil-modal-content perfil-success-modal">
+            <div class="perfil-modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Perfil Atualizado!</h3>
+            <p>Suas informações foram atualizadas com sucesso.</p>
+            <button id="perfil-modal-close-btn" class="perfil-modal-close-btn">Continuar</button>
+        </div>
+    </div>
+
+    <script src="/src/js/pages/perfil.js"></script>
+</body>
+</html>

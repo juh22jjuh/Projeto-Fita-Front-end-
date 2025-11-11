@@ -1,52 +1,156 @@
+// header.js - Versão corrigida e simplificada para mobile
 class HeaderManager {
     constructor() {
+        this.isMobileMenuOpen = false;
         this.init();
     }
 
     init() {
+        console.log('🚀 HeaderManager inicializando...');
         this.setupMobileMenu();
-        this.setupActiveLinks();
         this.setupUserMenu();
-        this.handleResize();
         this.checkLoginStatus();
-
-        // 🔥 ADICIONE ESTA LINHA PARA TESTAR - FORÇAR USUÁRIO LOGADO
-        this.forceTestLogin();
+        this.setupActiveLinks();
     }
 
-    // 🔥 FUNÇÃO PARA TESTE - FORÇAR USUÁRIO LOGADO
-    forceTestLogin() {
+    setupMobileMenu() {
+        console.log('🔧 Configurando menu mobile...');
+        
+        const mobileHamburger = document.getElementById('mobile-hamburger');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const sidebarClose = document.getElementById('sidebar-close');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
 
-        const TESTAR_LOGADO = true;
-
-        if (TESTAR_LOGADO) {
-            console.log('🔥 MODO TESTE: Usuário LOGADO');
-            localStorage.setItem('userLoggedIn', 'true');
-            localStorage.setItem('userData', JSON.stringify({
-                nome: 'João Silva',
-                email: 'joao@fita.com',
-                avatar: '../assets/default-avatar.png'
-            }));
-        } else {
-            console.log('🔥 MODO TESTE: Usuário NÃO logado');
-            localStorage.removeItem('userLoggedIn');
-            localStorage.removeItem('userData');
+        if (!mobileHamburger || !mobileSidebar) {
+            console.error('❌ Elementos do menu mobile não encontrados!');
+            return;
         }
 
-        this.checkLoginStatus();
+        // Abrir menu
+        mobileHamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.openMobileMenu();
+        });
+
+        // Fechar menu
+        if (sidebarClose) {
+            sidebarClose.addEventListener('click', () => {
+                this.closeMobileMenu();
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', () => {
+                this.closeMobileMenu();
+            });
+        }
+
+        // Fechar com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isMobileMenuOpen) {
+                this.closeMobileMenu();
+            }
+        });
+
+        // Fechar ao clicar em links - VERSÃO CORRIGIDA
+        document.querySelectorAll('.sidebar-nav-item').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Se não for link âncora (#), fecha o menu
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('#')) {
+                    this.closeMobileMenu();
+                }
+                // Links âncora mantêm o menu aberto para navegação suave
+            });
+        });
+
+        console.log('✅ Menu mobile configurado!');
     }
 
-    // Resto do código permanece igual...
+    openMobileMenu() {
+        console.log('📱 Abrindo menu mobile...');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const mobileHamburger = document.getElementById('mobile-hamburger');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        if (mobileSidebar) mobileSidebar.classList.add('active');
+        if (mobileHamburger) mobileHamburger.classList.add('active');
+        if (sidebarOverlay) sidebarOverlay.classList.add('active');
+        
+        document.body.classList.add('menu-open');
+        this.isMobileMenuOpen = true;
+    }
+
+    closeMobileMenu() {
+        console.log('📱 Fechando menu mobile...');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const mobileHamburger = document.getElementById('mobile-hamburger');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        if (mobileSidebar) mobileSidebar.classList.remove('active');
+        if (mobileHamburger) mobileHamburger.classList.remove('active');
+        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+        
+        document.body.classList.remove('menu-open');
+        this.isMobileMenuOpen = false;
+    }
+
+    setupUserMenu() {
+        const userProfile = document.getElementById('user-profile');
+        if (userProfile) {
+            userProfile.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleUserMenu();
+            });
+
+            // Fechar menu do usuário ao clicar fora
+            document.addEventListener('click', () => {
+                this.closeUserMenu();
+            });
+        }
+
+        // Logout
+        document.querySelectorAll('.logout-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.logout();
+            });
+        });
+    }
+
+    toggleUserMenu() {
+        const userMenu = document.getElementById('user-menu');
+        if (userMenu) {
+            const isOpen = userMenu.style.opacity === '1';
+            isOpen ? this.closeUserMenu() : this.openUserMenu();
+        }
+    }
+
+    openUserMenu() {
+        const userMenu = document.getElementById('user-menu');
+        if (userMenu) {
+            userMenu.style.opacity = '1';
+            userMenu.style.visibility = 'visible';
+            userMenu.style.transform = 'translateY(8px)';
+        }
+    }
+
+    closeUserMenu() {
+        const userMenu = document.getElementById('user-menu');
+        if (userMenu) {
+            userMenu.style.opacity = '0';
+            userMenu.style.visibility = 'hidden';
+            userMenu.style.transform = 'translateY(-10px)';
+        }
+    }
+
     checkLoginStatus() {
+        // Simulação - você pode integrar com sua lógica real
         const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
-        const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-
-        console.log('📊 Status login:', isLoggedIn);
-        console.log('📊 Dados usuário:', userData);
-
+        console.log('🔐 Status login:', isLoggedIn);
+        
         if (isLoggedIn) {
             this.showUserSection();
-            this.updateUserInfo(userData);
         } else {
             this.showAuthSection();
         }
@@ -58,8 +162,6 @@ class HeaderManager {
         const sidebarUser = document.getElementById('sidebar-user');
         const sidebarUserItems = document.getElementById('sidebar-user-items');
         const sidebarAuth = document.getElementById('sidebar-auth');
-
-        console.log('🎯 Mostrando usuário logado...');
 
         if (userSection) userSection.style.display = 'flex';
         if (authSection) authSection.style.display = 'none';
@@ -75,8 +177,6 @@ class HeaderManager {
         const sidebarUserItems = document.getElementById('sidebar-user-items');
         const sidebarAuth = document.getElementById('sidebar-auth');
 
-        console.log('🎯 Mostrando usuário NÃO logado...');
-
         if (userSection) userSection.style.display = 'none';
         if (authSection) authSection.style.display = 'flex';
         if (sidebarUser) sidebarUser.style.display = 'none';
@@ -84,191 +184,63 @@ class HeaderManager {
         if (sidebarAuth) sidebarAuth.style.display = 'block';
     }
 
-    // Menu do usuário desktop
-    setupUserMenu() {
-        const userProfile = document.getElementById('user-profile');
-
-        if (userProfile) {
-            // Agora o clique funciona em toda a div do perfil
-            userProfile.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.toggleUserMenu();
-            });
-        }
-
-        // Fechar menu ao clicar fora
-        document.addEventListener('click', () => {
-            this.closeUserMenu();
-        });
-
-        // Logout
-        const logoutBtns = document.querySelectorAll('.logout-btn');
-        logoutBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.logout();
-            });
-        });
-    }
-
-    toggleUserMenu() {
-        const userMenu = document.getElementById('user-menu');
-        if (userMenu) {
-            const isOpen = userMenu.style.opacity === '1';
-            if (isOpen) {
-                this.closeUserMenu();
-            } else {
-                this.openUserMenu();
-            }
-        }
-    }
-
-    openUserMenu() {
-        const userMenu = document.getElementById('user-menu');
-        if (userMenu) {
-            userMenu.style.opacity = '1';
-            userMenu.style.visibility = 'visible';
-            userMenu.style.transform = 'translateY(5px)';
-        }
-    }
-
-    closeUserMenu() {
-        const userMenu = document.getElementById('user-menu');
-        if (userMenu) {
-            userMenu.style.opacity = '0';
-            userMenu.style.visibility = 'hidden';
-            userMenu.style.transform = 'translateY(-10px)';
-        }
-    }
-
-    // Menu mobile
-    setupMobileMenu() {
-        const mobileHamburger = document.getElementById('mobile-hamburger');
-        const mobileSidebar = document.getElementById('mobile-sidebar');
-
-        if (mobileHamburger && mobileSidebar) {
-            mobileHamburger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.toggleMobileMenu();
-            });
-
-            // Fechar menu ao clicar em um link
-            document.querySelectorAll('.sidebar-nav-item').forEach(link => {
-                link.addEventListener('click', () => {
-                    this.closeMobileMenu();
-                });
-            });
-
-            // Fechar menu ao clicar fora
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.mobile-sidebar') &&
-                    !e.target.closest('.mobile-hamburger') &&
-                    mobileSidebar.classList.contains('active')) {
-                    this.closeMobileMenu();
-                }
-            });
-
-            // Prevenir fechamento ao clicar dentro do sidebar
-            mobileSidebar.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
-        }
-    }
-
-    toggleMobileMenu() {
-        const mobileSidebar = document.getElementById('mobile-sidebar');
-        const mobileHamburger = document.getElementById('mobile-hamburger');
-
-        if (mobileSidebar.classList.contains('active')) {
-            this.closeMobileMenu();
-        } else {
-            this.openMobileMenu();
-        }
-    }
-
-    openMobileMenu() {
-        const mobileSidebar = document.getElementById('mobile-sidebar');
-        const mobileHamburger = document.getElementById('mobile-hamburger');
-
-        mobileSidebar.classList.add('active');
-        mobileHamburger.classList.add('active');
-
-        // Adicionar overlay
-        this.addOverlay();
-    }
-
-    closeMobileMenu() {
-        const mobileSidebar = document.getElementById('mobile-sidebar');
-        const mobileHamburger = document.getElementById('mobile-hamburger');
-
-        mobileSidebar.classList.remove('active');
-        mobileHamburger.classList.remove('active');
-
-        // Remover overlay
-        this.removeOverlay();
-    }
-
-    addOverlay() {
-        const overlay = document.createElement('div');
-        overlay.className = 'sidebar-overlay active';
-        overlay.addEventListener('click', () => {
-            this.closeMobileMenu();
-        });
-        document.body.appendChild(overlay);
-    }
-
-    removeOverlay() {
-        const overlay = document.querySelector('.sidebar-overlay');
-        if (overlay) {
-            overlay.remove();
-        }
-    }
-
     logout() {
         localStorage.removeItem('userLoggedIn');
-        localStorage.removeItem('userToken');
+        localStorage.removeItem('userData');
         this.closeMobileMenu();
-        window.location.href = '../../index.html';
+        this.closeUserMenu();
+        
+        // Redirecionar para home
+        setTimeout(() => {
+            window.location.href = '../../index.html';
+        }, 300);
     }
 
-    // Links ativos
     setupActiveLinks() {
-        const currentPage = this.getCurrentPage();
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        navLinks.forEach(link => {
-            const linkPage = this.getPageFromHref(link.getAttribute('href'));
-            if (linkPage === currentPage) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        console.log('📍 Página atual:', currentPage);
+        
+        // Marcar links ativos no menu desktop
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref) {
+                const linkPage = linkHref.split('/').pop();
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                }
             }
         });
-    }
 
-    getCurrentPage() {
-        const path = window.location.pathname;
-        const page = path.split('/').pop() || 'index.html';
-        return page;
-    }
-
-    getPageFromHref(href) {
-        if (!href) return '';
-        return href.split('/').pop();
-    }
-
-    // Redimensionamento
-    handleResize() {
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                this.closeMobileMenu();
-                this.closeUserMenu();
+        // Marcar links ativos no menu mobile
+        document.querySelectorAll('.sidebar-nav-item').forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref && !linkHref.startsWith('#')) {
+                const linkPage = linkHref.split('/').pop();
+                if (linkPage === currentPage) {
+                    link.style.color = 'var(--blue)';
+                    link.style.fontWeight = '600';
+                }
             }
         });
     }
 }
 
-// Inicializar quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-    new HeaderManager();
-});
+// Inicialização garantida
+function initializeHeader() {
+    console.log('📄 Inicializando header...');
+    
+    // Aguardar um pouco para garantir que o DOM está pronto
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            new HeaderManager();
+        });
+    } else {
+        // DOM já está pronto
+        setTimeout(() => {
+            new HeaderManager();
+        }, 100);
+    }
+}
+
+// Inicializar
+initializeHeader();

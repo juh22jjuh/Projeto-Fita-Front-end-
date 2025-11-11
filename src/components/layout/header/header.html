@@ -59,17 +59,17 @@
         </div>
 
         <!-- Hamburguer na direita (mobile) -->
-        <div class="mobile-hamburger" id="mobile-hamburger">
+        <button class="mobile-hamburger" id="mobile-hamburger" type="button" aria-label="Abrir menu">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
     </div>
 
     <!-- Menu lateral mobile -->
     <div class="mobile-sidebar" id="mobile-sidebar">
         <div class="sidebar-header">
-            <button class="sidebar-close" id="sidebar-close">
+            <button class="sidebar-close" id="sidebar-close" type="button" aria-label="Fechar menu">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -85,30 +85,7 @@
                     <span class="sidebar-user-email">usuario@email.com</span>
                 </div>
             </div>
-
-            <!-- Menu de navegação -->
-            <nav class="sidebar-nav">
-                <a href="../../index.html" class="sidebar-nav-item">
-                    <i class="fas fa-home"></i>
-                    Home
-                </a>
-                <a href="/src/pages/listarEventos.html" class="sidebar-nav-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    Eventos
-                </a>
-                <a href="#programacao" class="sidebar-nav-item">
-                    <i class="fas fa-list-alt"></i>
-                    Programação
-                </a>
-                <a href="#expositores" class="sidebar-nav-item">
-                    <i class="fas fa-users"></i>
-                    Expositores
-                </a>
-                <a href="#contato" class="sidebar-nav-item">
-                    <i class="fas fa-envelope"></i>
-                    Contato
-                </a>
-
+            
                 <!-- Itens do usuário logado -->
                 <div class="sidebar-user-items" id="sidebar-user-items" style="display: none;">
                     <div class="sidebar-divider"></div>
@@ -141,4 +118,7 @@
             </nav>
         </div>
     </div>
+
+    <!-- Overlay para mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 </header>

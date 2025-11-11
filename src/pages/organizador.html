@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participantes - 3ª FITA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/pages/organizador.css">
+</head>
+
+<body>
+    <div class="organizador-container">
+        <!-- HEADER -->
+        <header class="organizador-header">
+            <div class="organizador-logo">
+                <h1>3ª FITA</h1>
+                <p>Feira Industrial, Tecnológica e do Agronegócio</p>
+            </div>
+            <a href="/index.html" class="organizador-back-btn">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+        </header>
+
+        <div class="organizador-content">
+            <!-- TÍTULO DA PÁGINA -->
+            <div class="organizador-page-header">
+                <div class="organizador-icon-box">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="organizador-title-section">
+                    <h1>Participantes Inscritos</h1>
+                    <p>Gerencie todos os participantes da 3ª FITA</p>
+                </div>
+            </div>
+
+            <!-- STATS -->
+            <section class="organizador-stats-grid">
+                <div class="organizador-stat-card organizador-stat-blue">
+                    <div class="organizador-stat-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="organizador-stat-info">
+                        <p>Total de Inscritos</p>
+                        <h2>156</h2>
+                    </div>
+                </div>
+                <div class="organizador-stat-card organizador-stat-green">
+                    <div class="organizador-stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="organizador-stat-info">
+                        <p>Confirmados</p>
+                        <h2>89</h2>
+                    </div>
+                </div>
+                <div class="organizador-stat-card organizador-stat-yellow">
+                    <div class="organizador-stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="organizador-stat-info">
+                        <p>Pendentes</p>
+                        <h2>42</h2>
+                    </div>
+                </div>
+                <div class="organizador-stat-card organizador-stat-red">
+                    <div class="organizador-stat-icon">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="organizador-stat-info">
+                        <p>Cancelados</p>
+                        <h2>25</h2>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEARCH + FILTERS -->
+            <section class="organizador-filters">
+                <div class="organizador-search-box">
+                    <i class="fas fa-search organizador-search-icon"></i>
+                    <input type="text" class="organizador-search-input" placeholder="Buscar por nome, email ou telefone...">
+                </div>
+
+                <div class="organizador-filter-controls">
+                    <div class="organizador-tabs">
+                        <button class="organizador-tab organizador-tab-active">
+                            <i class="fas fa-users"></i> Todos
+                        </button>
+                        <button class="organizador-tab">
+                            <i class="fas fa-check-circle"></i> Confirmados
+                        </button>
+                        <button class="organizador-tab">
+                            <i class="fas fa-clock"></i> Pendentes
+                        </button>
+                        <button class="organizador-tab">
+                            <i class="fas fa-times-circle"></i> Cancelados
+                        </button>
+                    </div>
+
+                    <button class="organizador-export-btn">
+                        <i class="fas fa-download"></i> Exportar CSV
+                    </button>
+                </div>
+            </section>
+
+            <!-- TABELA DE PARTICIPANTES -->
+            <section class="organizador-table-container">
+                <div class="organizador-table-wrapper">
+                    <table class="organizador-table">
+                        <thead>
+                            <tr>
+                                <th class="organizador-table-header">
+                                    <span>Nome</span>
+                                </th>
+                                <th class="organizador-table-header">
+                                    <span>Email</span>
+                                </th>
+                                <th class="organizador-table-header">
+                                    <span>Telefone</span>
+                                </th>
+                                <th class="organizador-table-header">
+                                    <span>Status</span>
+                                </th>
+                                <th class="organizador-table-header organizador-table-actions">
+                                    <span>Ações</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- LINHA 1 -->
+                            <tr class="organizador-table-row" data-participant="1">
+                                <td class="organizador-table-cell organizador-table-name">
+                                    <div class="organizador-user-info">
+                                        <div class="organizador-user-avatar">
+                                            JS
+                                        </div>
+                                        <div class="organizador-user-details">
+                                            <strong>João Silva Santos</strong>
+                                            <span>São Paulo, SP</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="organizador-table-cell">
+                                    joao.silva@empresa.com
+                                </td>
+                                <td class="organizador-table-cell">
+                                    (11) 99999-9999
+                                </td>
+                                <td class="organizador-table-cell">
+                                    <span class="organizador-badge organizador-badge-green">
+                                        <i class="fas fa-check-circle"></i> Confirmado
+                                    </span>
+                                </td>
+                                <td class="organizador-table-cell organizador-table-actions">
+                                    <button class="organizador-action-btn organizador-action-view" title="Ver detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- LINHA 2 -->
+                            <tr class="organizador-table-row" data-participant="2">
+                                <td class="organizador-table-cell organizador-table-name">
+                                    <div class="organizador-user-info">
+                                        <div class="organizador-user-avatar">
+                                            MC
+                                        </div>
+                                        <div class="organizador-user-details">
+                                            <strong>Maria Oliveira Costa</strong>
+                                            <span>Rio de Janeiro, RJ</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="organizador-table-cell">
+                                    maria.oliveira@tech.com
+                                </td>
+                                <td class="organizador-table-cell">
+                                    (21) 88888-8888
+                                </td>
+                                <td class="organizador-table-cell">
+                                    <span class="organizador-badge organizador-badge-yellow">
+                                        <i class="fas fa-clock"></i> Pendente
+                                    </span>
+                                </td>
+                                <td class="organizador-table-cell organizador-table-actions">
+                                    <button class="organizador-action-btn organizador-action-view" title="Ver detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- LINHA 3 -->
+                            <tr class="organizador-table-row" data-participant="3">
+                                <td class="organizador-table-cell organizador-table-name">
+                                    <div class="organizador-user-info">
+                                        <div class="organizador-user-avatar">
+                                            PL
+                                        </div>
+                                        <div class="organizador-user-details">
+                                            <strong>Pedro Henrique Lima</strong>
+                                            <span>Belo Horizonte, MG</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="organizador-table-cell">
+                                    pedro.lima@agro.com
+                                </td>
+                                <td class="organizador-table-cell">
+                                    (31) 77777-7777
+                                </td>
+                                <td class="organizador-table-cell">
+                                    <span class="organizador-badge organizador-badge-red">
+                                        <i class="fas fa-times-circle"></i> Cancelado
+                                    </span>
+                                </td>
+                                <td class="organizador-table-cell organizador-table-actions">
+                                    <button class="organizador-action-btn organizador-action-view" title="Ver detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- LINHA 4 -->
+                            <tr class="organizador-table-row" data-participant="4">
+                                <td class="organizador-table-cell organizador-table-name">
+                                    <div class="organizador-user-info">
+                                        <div class="organizador-user-avatar">
+                                            AS
+                                        </div>
+                                        <div class="organizador-user-details">
+                                            <strong>Ana Carolina Souza</strong>
+                                            <span>Blumenau, SC</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="organizador-table-cell">
+                                    ana.souza@inovacao.com
+                                </td>
+                                <td class="organizador-table-cell">
+                                    (47) 66666-6666
+                                </td>
+                                <td class="organizador-table-cell">
+                                    <span class="organizador-badge organizador-badge-green">
+                                        <i class="fas fa-check-circle"></i> Confirmado
+                                    </span>
+                                </td>
+                                <td class="organizador-table-cell organizador-table-actions">
+                                    <button class="organizador-action-btn organizador-action-view" title="Ver detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- LINHA 5 -->
+                            <tr class="organizador-table-row" data-participant="5">
+                                <td class="organizador-table-cell organizador-table-name">
+                                    <div class="organizador-user-info">
+                                        <div class="organizador-user-avatar">
+                                            CR
+                                        </div>
+                                        <div class="organizador-user-details">
+                                            <strong>Carlos Eduardo Rodrigues</strong>
+                                            <span>Porto Alegre, RS</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="organizador-table-cell">
+                                    carlos.rodrigues@industria.com
+                                </td>
+                                <td class="organizador-table-cell">
+                                    (51) 55555-5555
+                                </td>
+                                <td class="organizador-table-cell">
+                                    <span class="organizador-badge organizador-badge-yellow">
+                                        <i class="fas fa-clock"></i> Pendente
+                                    </span>
+                                </td>
+                                <td class="organizador-table-cell organizador-table-actions">
+                                    <button class="organizador-action-btn organizador-action-view" title="Ver detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PAGINAÇÃO -->
+                <div class="organizador-pagination">
+                    <button class="organizador-pagination-btn organizador-pagination-prev">
+                        <i class="fas fa-chevron-left"></i> Anterior
+                    </button>
+                    <div class="organizador-pagination-pages">
+                        <button class="organizador-pagination-page organizador-pagination-active">1</button>
+                        <button class="organizador-pagination-page">2</button>
+                        <button class="organizador-pagination-page">3</button>
+                        <span class="organizador-pagination-ellipsis">...</span>
+                        <button class="organizador-pagination-page">10</button>
+                    </div>
+                    <button class="organizador-pagination-btn organizador-pagination-next">
+                        Próxima <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- MODAL DE DETALHES DO PARTICIPANTE -->
+    <div id="organizador-participant-modal" class="organizador-modal">
+        <div class="organizador-modal-content organizizador-modal-large">
+            <div class="organizador-modal-header">
+                <h3>Detalhes do Participante</h3>
+                <button type="button" id="organizador-modal-close" class="organizador-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="organizador-modal-body">
+                <div class="organizador-modal-participant-info">
+                    <!-- Conteúdo será preenchido via JavaScript -->
+                </div>
+            </div>
+
+            <div class="organizador-modal-footer">
+                <button class="organizador-modal-btn organizador-modal-secondary">
+                    <i class="fas fa-edit"></i> Editar
+                </button>
+                <button class="organizador-modal-btn organizador-modal-primary">
+                    <i class="fas fa-envelope"></i> Enviar Email
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/src/js/pages/organizador.js"></script>
+</body>
+</html>

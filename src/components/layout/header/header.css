@@ -248,10 +248,12 @@
     color: #c0392b !important;
 }
 
-/* HAMBURGUER MOBILE */
+/* HAMBURGUER MOBILE - CORRIGIDO */
 .mobile-hamburger {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 4px;
     cursor: pointer;
     padding: 0.8rem;
@@ -259,6 +261,9 @@
     border: 2px solid var(--blue-light);
     border-radius: 8px;
     transition: var(--transition);
+    background: none;
+    width: 44px;
+    height: 44px;
 }
 
 .mobile-hamburger:hover {
@@ -272,6 +277,7 @@
     background: var(--blue);
     transition: var(--transition);
     border-radius: 2px;
+    display: block;
 }
 
 .mobile-hamburger.active {
@@ -295,7 +301,7 @@
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* MENU LATERAL MOBILE */
+/* MENU LATERAL MOBILE - CORRIGIDO */
 .mobile-sidebar {
     position: fixed;
     top: 0;
@@ -328,6 +334,11 @@
     padding: 0.5rem;
     border-radius: 50%;
     transition: var(--transition);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sidebar-close:hover {
@@ -401,6 +412,7 @@
     transition: var(--transition);
     border-radius: 8px;
     margin-bottom: 0.3rem;
+    cursor: pointer;
 }
 
 .sidebar-nav-item:hover {
@@ -433,7 +445,7 @@
     color: var(--white) !important;
 }
 
-/* OVERLAY */
+/* OVERLAY - CORRIGIDO */
 .sidebar-overlay {
     position: fixed;
     top: 0;
@@ -452,7 +464,7 @@
     visibility: visible;
 }
 
-/* RESPONSIVIDADE */
+/* RESPONSIVIDADE - CORRIGIDA */
 @media (max-width: 1024px) {
     .nav-menu {
         gap: 1.5rem;
@@ -472,7 +484,7 @@
     .nav-section,
     .auth-section,
     .user-section {
-        display: none;
+        display: none !important;
     }
 
     .mobile-hamburger {
@@ -522,4 +534,9 @@
 
 .main-header {
     animation: slideDown 0.5s ease-out;
+}
+
+/* Garantir que o body não role quando menu estiver aberto */
+body.menu-open {
+    overflow: hidden;
 }
