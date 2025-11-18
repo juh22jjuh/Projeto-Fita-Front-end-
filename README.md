@@ -1,10 +1,10 @@
-# 🚜 FITA - Feira de Inovação e Tecnologia no Agronegócio
+# 🚜 FITA - Feira Industrial, Tecnológica e do Agronegócio
 
-Sistema web para a 3ª Feira de Agronegócio
+Sistema web 
 
 ## ✨ Sobre o Projeto
 
-A **FITA (Feira de Inovação e Tecnologia no Agronegócio)** é uma plataforma web desenvolvida para gerenciar o acesso de participantes da 3ª edição do evento. O sistema oferece interface moderna e responsiva para cadastro e autenticação de usuários.
+A **FITA (Feira Industrial, Tecnológica e do Agronegócio)** é uma plataforma web desenvolvida para gerenciar o acesso de participantes da 3ª edição do evento.
 
 
 ## 🛠️ Tecnologias Utilizadas
@@ -45,7 +45,7 @@ FITA-Feira-Agronegocio/
 ### Método 1: Servidor Local Simples
 ```bash
 # Clone o repositório
-git clone https://github.com/juh22jjuh/Projeto-Fita-Front-end-.git
+git clone do repositório
 
 # Acesse a pasta do projeto
 cd pasta do projeto

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Eventos - 3ª FITA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/pages/meus-eventos.css">
+</head>
+<body>
+    <div class="meus-eventos-container">
+        <!-- Header -->
+        <header class="meus-eventos-header">
+            <div class="meus-eventos-logo">
+                <h1>3ª FITA</h1>
+                <p>Feira Industrial, Tecnológica e do Agronegócio</p>
+            </div>
+            <nav class="meus-eventos-nav">
+            </nav>
+            <div class="meus-eventos-user">
+                <span>Olá, Robson</span>
+                <div class="meus-eventos-avatar">R</div>
+            </div>
+        </header>
+        <a class="link" href="../../index.html">VOLTAR PARA INDEX</a>
+
+        <!-- Main Content -->
+        <main class="meus-eventos-main">
+            <div class="meus-eventos-title-section">
+                <h1 class="meus-eventos-title">Meus Eventos</h1>
+                <p class="meus-eventos-subtitle">Gerencie todos os seus eventos da 3ª FITA</p>
+                <button class="meus-eventos-create-btn" id="criarEventoBtn">
+                    <i class="fas fa-plus"></i> Criar Novo Evento
+                </button>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="meus-eventos-stats">
+                <div class="meus-eventos-stat-card">
+                    <div class="meus-eventos-stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="meus-eventos-stat-info">
+                        <h3 class="meus-eventos-stat-number">5</h3>
+                        <p class="meus-eventos-stat-label">Total de Eventos</p>
+                    </div>
+                </div>
+                <div class="meus-eventos-stat-card">
+                    <div class="meus-eventos-stat-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="meus-eventos-stat-info">
+                        <h3 class="meus-eventos-stat-number">3</h3>
+                        <p class="meus-eventos-stat-label">Ativos</p>
+                    </div>
+                </div>
+                <div class="meus-eventos-stat-card">
+                    <div class="meus-eventos-stat-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="meus-eventos-stat-info">
+                        <h3 class="meus-eventos-stat-number">1</h3>
+                        <p class="meus-eventos-stat-label">Rascunhos</p>
+                    </div>
+                </div>
+                <div class="meus-eventos-stat-card">
+                    <div class="meus-eventos-stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="meus-eventos-stat-info">
+                        <h3 class="meus-eventos-stat-number">156</h3>
+                        <p class="meus-eventos-stat-label">Total de Inscritos</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="meus-eventos-filters">
+                <div class="meus-eventos-search">
+                    <i class="fas fa-search meus-eventos-search-icon"></i>
+                    <input type="text" placeholder="Buscar por título, categoria..." class="meus-eventos-search-input">
+                </div>
+                <div class="meus-eventos-filter-controls">
+                    <div class="meus-eventos-tabs">
+                        <button class="meus-eventos-tab meus-eventos-tab-active">
+                            <i class="fas fa-users"></i> Todos
+                        </button>
+                        <button class="meus-eventos-tab">
+                            <i class="fas fa-play-circle"></i> Ativos
+                        </button>
+                        <button class="meus-eventos-tab">
+                            <i class="fas fa-check-circle"></i> Finalizados
+                        </button>
+                        <button class="meus-eventos-tab">
+                            <i class="fas fa-edit"></i> Rascunhos
+                        </button>
+                    </div>
+                    <button class="meus-eventos-export-btn">
+                        <i class="fas fa-download"></i> Exportar CSV
+                    </button>
+                </div>
+            </div>
+
+            <!-- Events Table -->
+            <div class="meus-eventos-table-container">
+                <table class="meus-eventos-table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Tipo</th>
+                            <th>Data/Horário</th>
+                            <th>Participantes</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="meus-eventos-clickable-row" data-event-id="1">
+                            <td>
+                                <div class="meus-eventos-event-title">Workshop de Tecnologia Industrial</div>
+                                <div class="meus-eventos-event-category">Tecnológica</div>
+                            </td>
+                            <td>Palestra</td>
+                            <td>
+                                <div class="meus-eventos-event-date">10/11/2025</div>
+                                <div class="meus-eventos-event-time">09:10 (60min)</div>
+                            </td>
+                            <td>
+                                <div class="meus-eventos-event-participants">0/200</div>
+                            </td>
+                            <td>
+                                <span class="meus-eventos-status meus-eventos-status-active">Ativo</span>
+                            </td>
+                            <td>
+                                <div class="meus-eventos-actions">
+                                    <button class="meus-eventos-action-btn" onclick="editarEvento(1, event)">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </button>
+                                    <button class="meus-eventos-action-btn meus-eventos-action-danger" onclick="excluirEvento(1, event)">
+                                        <i class="fas fa-trash"></i> Excluir
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="meus-eventos-clickable-row" data-event-id="2">
+                            <td>
+                                <div class="meus-eventos-event-title">Inovação no Agronegócio</div>
+                                <div class="meus-eventos-event-category">Agronegócio</div>
+                            </td>
+                            <td>Workshop</td>
+                            <td>
+                                <div class="meus-eventos-event-date">15/11/2025</div>
+                                <div class="meus-eventos-event-time">14:00 (120min)</div>
+                            </td>
+                            <td>
+                                <div class="meus-eventos-event-participants">45/80</div>
+                            </td>
+                            <td>
+                                <span class="meus-eventos-status meus-eventos-status-active">Ativo</span>
+                            </td>
+                            <td>
+                                <div class="meus-eventos-actions">
+                                    <button class="meus-eventos-action-btn" onclick="editarEvento(2, event)">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </button>
+                                    <button class="meus-eventos-action-btn meus-eventos-action-danger" onclick="excluirEvento(2, event)">
+                                        <i class="fas fa-trash"></i> Excluir
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="meus-eventos-clickable-row" data-event-id="3">
+                            <td>
+                                <div class="meus-eventos-event-title">Tecnologias Sustentáveis</div>
+                                <div class="meus-eventos-event-category">Tecnológica</div>
+                            </td>
+                            <td>Palestra</td>
+                            <td>
+                                <div class="meus-eventos-event-date">05/10/2025</div>
+                                <div class="meus-eventos-event-time">10:30 (90min)</div>
+                            </td>
+                            <td>
+                                <div class="meus-eventos-event-participants">120/200</div>
+                            </td>
+                            <td>
+                                <span class="meus-eventos-status meus-eventos-status-finished">Finalizado</span>
+                            </td>
+                            <td>
+                                <div class="meus-eventos-actions">
+                                    <button class="meus-eventos-action-btn" onclick="editarEvento(3, event)">
+                                        <i class="fas fa-eye"></i> Ver
+                                    </button>
+                                    <button class="meus-eventos-action-btn meus-eventos-action-danger" onclick="excluirEvento(3, event)">
+                                        <i class="fas fa-trash"></i> Excluir
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="meus-eventos-clickable-row" data-event-id="4">
+                            <td>
+                                <div class="meus-eventos-event-title">Futuro da Indústria 4.0</div>
+                                <div class="meus-eventos-event-category">Tecnológica</div>
+                            </td>
+                            <td>Painel</td>
+                            <td>
+                                <div class="meus-eventos-event-date">--/--/----</div>
+                                <div class="meus-eventos-event-time">--:-- (--min)</div>
+                            </td>
+                            <td>
+                                <div class="meus-eventos-event-participants">-/--</div>
+                            </td>
+                            <td>
+                                <span class="meus-eventos-status meus-eventos-status-draft">Rascunho</span>
+                            </td>
+                            <td>
+                                <div class="meus-eventos-actions">
+                                    <button class="meus-eventos-action-btn" onclick="editarEvento(4, event)">
+                                        <i class="fas fa-edit"></i> Continuar
+                                    </button>
+                                    <button class="meus-eventos-action-btn meus-eventos-action-danger" onclick="excluirEvento(4, event)">
+                                        <i class="fas fa-trash"></i> Excluir
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Criação de Evento -->
+    <div class="meus-eventos-modal" id="criarEventoModal">
+        <div class="meus-eventos-modal-content meus-eventos-modal-large">
+            <div class="meus-eventos-modal-header">
+                <h2>Criar Novo Evento</h2>
+                <button class="meus-eventos-modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="meus-eventos-modal-body">
+                <form id="eventoForm" class="meus-eventos-form">
+                    <!-- Seção 1: Informações Básicas -->
+                    <div class="meus-eventos-form-section">
+                        <h3>Informações Básicas</h3>
+                        
+                        <div class="meus-eventos-form-group">
+                            <label for="tituloEvento" class="meus-eventos-form-label">Título do Evento *</label>
+                            <input type="text" id="tituloEvento" class="meus-eventos-form-input" placeholder="Ex: Workshop de Tecnologia Industrial" required>
+                        </div>
+                        
+                        <div class="meus-eventos-form-row">
+                            <div class="meus-eventos-form-group">
+                                <label for="tipoEvento" class="meus-eventos-form-label">Tipo de Evento *</label>
+                                <select id="tipoEvento" class="meus-eventos-form-select" required>
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="palestra">Palestra (até 200 pessoas)</option>
+                                    <option value="workshop">Workshop</option>
+                                    <option value="painel">Painel</option>
+                                    <option value="mesa-redonda">Mesa Redonda</option>
+                                </select>
+                            </div>
+                            
+                            <div class="meus-eventos-form-group">
+                                <label for="categoriaEvento" class="meus-eventos-form-label">Categoria *</label>
+                                <select id="categoriaEvento" class="meus-eventos-form-select" required>
+                                    <option value="">Selecione a categoria</option>
+                                    <option value="tecnologica">Tecnológica</option>
+                                    <option value="agronegocio">Agronegócio</option>
+                                    <option value="industrial">Industrial</option>
+                                    <option value="sustentabilidade">Sustentabilidade</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="meus-eventos-form-row">
+                            <div class="meus-eventos-form-group">
+                                <label for="instrutorEvento" class="meus-eventos-form-label">Instrutor/Palestrante *</label>
+                                <input type="text" id="instrutorEvento" class="meus-eventos-form-input" placeholder="Nome do instrutor" required>
+                            </div>
+                            
+                            <div class="meus-eventos-form-group">
+                                <label for="localEvento" class="meus-eventos-form-label">Local *</label>
+                                <input type="text" id="localEvento" class="meus-eventos-form-input" placeholder="Ex: Auditório Principal" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 2: Data e Horário -->
+                    <div class="meus-eventos-form-section">
+                        <h3>Data e Horário</h3>
+                        
+                        <div class="meus-eventos-form-row">
+                            <div class="meus-eventos-form-group">
+                                <label for="dataEvento" class="meus-eventos-form-label">Data *</label>
+                                <input type="date" id="dataEvento" class="meus-eventos-form-input" required>
+                            </div>
+                            
+                            <div class="meus-eventos-form-group">
+                                <label for="horarioEvento" class="meus-eventos-form-label">Horário de Início *</label>
+                                <input type="time" id="horarioEvento" class="meus-eventos-form-input" required>
+                            </div>
+                            
+                            <div class="meus-eventos-form-group">
+                                <label for="duracaoEvento" class="meus-eventos-form-label">Duração (minutos) *</label>
+                                <select id="duracaoEvento" class="meus-eventos-form-select" required>
+                                    <option value="30">30 min</option>
+                                    <option value="60" selected>60 min</option>
+                                    <option value="90">90 min</option>
+                                    <option value="120">120 min</option>
+                                    <option value="180">180 min</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 3: Descrição -->
+                    <div class="meus-eventos-form-section">
+                        <h3>Descrição</h3>
+                        
+                        <div class="meus-eventos-form-group">
+                            <label for="descricaoEvento" class="meus-eventos-form-label">Descrição * (mínimo 100 caracteres)</label>
+                            <textarea id="descricaoEvento" class="meus-eventos-form-textarea" placeholder="Descreva o evento, objetivos, público-alvo..." minlength="100" required></textarea>
+                            <div class="meus-eventos-char-count"><span id="charCount">0</span>/100 caracteres</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="meus-eventos-modal-footer">
+                <button type="button" class="meus-eventos-modal-btn meus-eventos-modal-secondary" id="cancelarBtn">Cancelar</button>
+                <button type="button" class="meus-eventos-modal-btn meus-eventos-modal-draft" id="salvarRascunhoBtn">Salvar Rascunho</button>
+                <button type="submit" form="eventoForm" class="meus-eventos-modal-btn meus-eventos-modal-primary" id="criarEventoSubmitBtn">Criar Evento</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/pages/meus-eventos.js"></script>
+</body>
+</html>

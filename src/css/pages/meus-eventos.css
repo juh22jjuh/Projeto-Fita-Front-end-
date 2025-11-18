@@ -1,0 +1,778 @@
+:root {
+    --blue-dark: #103f69;
+    --blue: #1068a6;
+    --yellow: #e5c038;
+    --orange: #e1811f;
+    --white: #fff;
+    --gray: #6b7280;
+    --light-blue: #badeed;
+    --light-gray: #f5f5f5;
+    --border-color: #e5e7eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(145deg, var(--blue-dark), var(--blue));
+    color: #1f2937;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.meus-eventos-container {
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* Header */
+.meus-eventos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.meus-eventos-logo h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.meus-eventos-logo p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+}
+
+.meus-eventos-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.meus-eventos-nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.meus-eventos-nav-link:hover,
+.meus-eventos-nav-link.active {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.meus-eventos-user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+}
+
+.meus-eventos-avatar {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Main Content */
+.meus-eventos-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.meus-eventos-title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.meus-eventos-title {
+    font-size: 2rem;
+    color: var(--blue-dark);
+    margin-bottom: 0.5rem;
+}
+
+.meus-eventos-subtitle {
+    color: var(--gray);
+}
+
+.meus-eventos-create-btn {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.meus-eventos-create-btn:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 104, 166, 0.3);
+}
+
+/* Stats Cards */
+.meus-eventos-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.meus-eventos-stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--blue);
+}
+
+.meus-eventos-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.meus-eventos-stat-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.meus-eventos-stat-info h3 {
+    font-size: 2rem;
+    color: var(--blue-dark);
+    margin-bottom: 0.25rem;
+}
+
+.meus-eventos-stat-info p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Filters */
+.meus-eventos-filters {
+    background: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.meus-eventos-search {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.meus-eventos-search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+}
+
+.meus-eventos-search-input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.meus-eventos-search-input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(16, 104, 166, 0.1);
+}
+
+.meus-eventos-filter-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.meus-eventos-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.meus-eventos-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-color);
+    background: white;
+    color: var(--gray);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.meus-eventos-tab:hover {
+    background: #e5e7eb;
+    border-color: var(--blue);
+}
+
+.meus-eventos-tab-active {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+}
+
+.meus-eventos-export-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: var(--yellow);
+    color: var(--blue-dark);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.meus-eventos-export-btn:hover {
+    background: var(--orange);
+    color: white;
+}
+
+/* Table */
+.meus-eventos-table-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.meus-eventos-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.meus-eventos-table th {
+    background: var(--light-blue);
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--blue-dark);
+    border-bottom: 2px solid var(--border-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.meus-eventos-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+/* Linhas clicáveis */
+.meus-eventos-clickable-row {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.meus-eventos-clickable-row:hover {
+    background-color: rgba(16, 104, 166, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.meus-eventos-clickable-row:active {
+    transform: translateY(0);
+}
+
+.meus-eventos-event-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--blue-dark);
+}
+
+.meus-eventos-event-category {
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.meus-eventos-event-date,
+.meus-eventos-event-time {
+    font-size: 0.9rem;
+}
+
+.meus-eventos-event-participants {
+    font-weight: 500;
+    color: var(--blue-dark);
+}
+
+/* Status */
+.meus-eventos-status {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.meus-eventos-status-active {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.meus-eventos-status-finished {
+    background: #e5e7eb;
+    color: #6b7280;
+}
+
+.meus-eventos-status-draft {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Actions */
+.meus-eventos-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.meus-eventos-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.8rem;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.meus-eventos-action-btn:hover {
+    background: var(--light-blue);
+    border-color: var(--blue);
+}
+
+.meus-eventos-action-danger {
+    color: #dc2626;
+    border-color: #dc2626;
+}
+
+.meus-eventos-action-danger:hover {
+    background: #fee2e2;
+}
+
+/* Modal */
+.meus-eventos-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.meus-eventos-modal-content {
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: meus-eventos-modal-appear 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.meus-eventos-modal-large {
+    max-width: 800px;
+}
+
+@keyframes meus-eventos-modal-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.meus-eventos-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--blue-dark);
+    color: white;
+}
+
+.meus-eventos-modal-header h2 {
+    color: white;
+    margin: 0;
+}
+
+.meus-eventos-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+.meus-eventos-modal-body {
+    padding: 1.5rem;
+}
+
+.meus-eventos-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.meus-eventos-modal-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.meus-eventos-modal-primary {
+    background: var(--blue);
+    color: white;
+}
+
+.meus-eventos-modal-primary:hover {
+    background: var(--blue-dark);
+}
+
+.meus-eventos-modal-secondary {
+    background: white;
+    border: 1px solid var(--border-color);
+    color: var(--blue-dark);
+}
+
+.meus-eventos-modal-secondary:hover {
+    background: var(--light-gray);
+}
+
+.meus-eventos-modal-draft {
+    background: var(--yellow);
+    color: var(--blue-dark);
+}
+
+.meus-eventos-modal-draft:hover {
+    background: var(--orange);
+    color: white;
+}
+
+/* Form Styles */
+.meus-eventos-form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.meus-eventos-form-section:last-of-type {
+    border-bottom: none;
+}
+
+.meus-eventos-form-section h3 {
+    color: var(--blue-dark);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.meus-eventos-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.meus-eventos-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.meus-eventos-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--blue-dark);
+}
+
+.meus-eventos-form-input,
+.meus-eventos-form-select,
+.meus-eventos-form-textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.meus-eventos-form-input:focus,
+.meus-eventos-form-select:focus,
+.meus-eventos-form-textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(16, 104, 166, 0.1);
+}
+
+.meus-eventos-form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.meus-eventos-char-count {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .meus-eventos-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .meus-eventos-title-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .meus-eventos-filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .meus-eventos-tabs {
+        justify-content: center;
+    }
+
+    .meus-eventos-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .meus-eventos-table {
+        min-width: 600px;
+    }
+
+    .meus-eventos-modal-footer {
+        flex-direction: column;
+    }
+
+    .meus-eventos-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .meus-eventos-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .meus-eventos-container {
+        padding: 0.5rem;
+    }
+
+    .meus-eventos-main {
+        padding: 1rem;
+    }
+
+    .meus-eventos-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .meus-eventos-stat-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .meus-eventos-tabs {
+        flex-direction: column;
+    }
+
+    .meus-eventos-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Modais de Feedback */
+.meus-eventos-feedback-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.meus-eventos-feedback-content {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: meus-eventos-modal-appear 0.3s ease;
+}
+
+.meus-eventos-feedback-success {
+    border-top: 4px solid #10b981;
+}
+
+.meus-eventos-feedback-error {
+    border-top: 4px solid #ef4444;
+}
+
+.meus-eventos-feedback-warning {
+    border-top: 4px solid #f59e0b;
+}
+
+.meus-eventos-feedback-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.meus-eventos-feedback-success .meus-eventos-feedback-icon {
+    color: #10b981;
+}
+
+.meus-eventos-feedback-error .meus-eventos-feedback-icon {
+    color: #ef4444;
+}
+
+.meus-eventos-feedback-warning .meus-eventos-feedback-icon {
+    color: #f59e0b;
+}
+
+.meus-eventos-feedback-content h3 {
+    color: var(--blue-dark);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.meus-eventos-feedback-content p {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.meus-eventos-feedback-btn {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.meus-eventos-feedback-btn:hover {
+    background: var(--blue-dark);
+}
+
+.meus-eventos-feedback-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.meus-eventos-feedback-cancel {
+    background: var(--gray);
+}
+
+.meus-eventos-feedback-cancel:hover {
+    background: #6b7280;
+}
+
+.meus-eventos-feedback-confirm {
+    background: #ef4444;
+}
+
+.meus-eventos-feedback-confirm:hover {
+    background: #dc2626;
+}
+
+.link {
+    color: #000;
+    background-color: #fff;
+    padding: 10px 10px;
+    text-decoration: none;
+    border-radius: 12px;
+}

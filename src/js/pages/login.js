@@ -159,7 +159,7 @@ function setupValidation() {
 
     // 5. Tenta a conexão com o back-end (PHP)
     try {
-        const response = await fetch('http://localhost/Projeto-Fita-Back-end--main/api_login.php', {
+        const response = await fetch('http://localhost/Projeto-Fita-Back-end-/routes/loginRoutes.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
