@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar Sala</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #1068a6;
+            color: #ffffff;
+        }
+
+        h1,
+        h4,
+        h5 {
+            color: #ffffff;
+        }
+
+        .display-5 {
+            color: #ffffff;
+        }
+        
+        .text-dark {
+            color: #ffffff !important;
+        }
+
+        .card {
+            background-color: #ffffff;
+            color: #212529;
+            border: none;
+        }
+
+        .bg-white {
+            background-color: #ffffff !important;
+        }
+        
+        .shadow {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .card h5, .card p {
+            color: #212529;
+        }
+
+        .rounded {
+            background-color: #ffffff !important;
+        }
+        
+        .rounded h4 {
+            color: #212529;
+        }
+
+        .equipment-btn.active {
+            background-color: #0d6efd;
+            color: white;
+            border-color: #0d6efd;
+        }
+
+        .equipment-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .btn-outline-secondary {
+            color: #6c757d;
+            border-color: #6c757d;
+        }
+        
+        .btn-outline-secondary:hover {
+            color: #fff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+
+        .room-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .room-card .badge.bg-light {
+            background-color: #f8f9fa !important;
+            color: #333 !important;
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+
+<body class="py-5">
+    <div class="container">
+        <div class="mb-4 d-flex">
+            <a href="Dashboard.html" class="fs-3 mt-2 me-4 text-center cursor-pointer text-dark text-decoration-none">
+                <i class="bi bi-arrow-left"></i>
+            </a>
+            <h1 class="display-5">Cadastro de Salas</h1>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="bg-white shadow p-4 pb-2 mb-4">
+                        <h5 id="formTitle" class="mb-2 fs-4">Nova Sala</h5>
+                        <p>Preencha as informações da sala</p>
+                    </div>
+                    <div class="card-body">
+                        <form id="roomForm" class="row g-3 needs-validation" novalidate>
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Nome da Sala</label>
+                                <input type="text" id="name" class="form-control" placeholder="Ex: Auditório 1"
+                                    required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="location" class="form-label">Localização da Sala</label>
+                                <input type="text" id="location" class="form-control" placeholder="Ex: Bloco 1"
+                                    required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="capacity" class="form-label">Capacidade Máxima</label>
+                                <input type="number" id="capacity" class="form-control" min="1" placeholder="Ex: 50"
+                                    required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="type" class="form-label">Tipo de Atividade</label>
+                                <select id="type" class="form-select" required>
+                                    <option value="" disabled selected>Selecione...</option>
+                                    <option value="teorica">Teórica</option>
+                                    <option value="pratica">Prática</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Equipamentos Disponíveis</label>
+                                <div class="row g-2">
+                                    <div class="col-4 d-grid gap-2">
+                                        <button type="button" class="btn btn-outline-secondary equipment-btn"
+                                            data-value="microfone"><i
+                                                class="bi bi-mic-fill me-2"></i>Microfone</button>
+                                        <button type="button" class="btn btn-outline-secondary equipment-btn"
+                                            data-value="sistema-som"><i class="bi bi-speaker-fill me-2"></i>Sistema de
+                                            Som</button>
+                                    </div>
+
+                                    <div class="col-4 d-grid gap-2">
+                                        <button type="button" class="btn btn-outline-secondary equipment-btn"
+                                            data-value="projetor"><i
+                                                class="bi bi-projector-fill me-2"></i>Projetor</button>
+                                        <button type="button" class="btn btn-outline-secondary equipment-btn"
+                                            data-value="tv"><i class="bi bi-tv-fill me-2"></i>TV</button>
+                                    </div>
+
+                                    <div class="col-4 d-grid gap-2">
+                                        <button type="button" class="btn btn-outline-secondary equipment-btn"
+                                            data-value="computadores"><i
+                                                class="bi bi-pc-display-horizontal me-2"></i>Computadores</button>
+                                        <button type="button" class="btn btn-outline-secondary equipment-btn"
+                                            data-value="quadro-branco"><i class="bi bi-square me-2"></i>Quadro
+                                            Branco</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" id="submitBtn" class="btn btn-primary w-100 mt-3">Cadastrar
+                                    Sala</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="bg-white rounded shadow p-4">
+                    <h4 class="mt-2 mb-3">Salas Cadastradas (<span id="roomCount">0</span>)</h4>
+                    <div id="roomsContainer" class="row g-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("roomForm");
+        const roomsContainer = document.getElementById("roomsContainer");
+        const roomCount = document.getElementById("roomCount");
+        const formTitle = document.getElementById("formTitle");
+        const submitBtn = document.getElementById("submitBtn");
+
+        let rooms = [
+            {
+                id: "1",
+                name: "Auditório Principal",
+                capacity: 200,
+                type: "teorica",
+                equipment: ["microfone", "projetor", "tv"],
+            },
+            {
+                id: "2",
+                name: "Laboratório 1",
+                capacity: 30,
+                type: "pratica",
+                equipment: ["computadores", "projetor"],
+            },
+        ];
+
+        let selectedEquipments = [];
+        let editingRoomId = null;
+
+        const updateRoomList = () => {
+            roomsContainer.innerHTML = "";
+            roomCount.textContent = rooms.length;
+
+            if (rooms.length === 0) {
+                roomsContainer.innerHTML = `<div class="col-12 text-center text-muted py-4">Nenhuma sala cadastrada ainda</div>`;
+                return;
+            }
+
+            rooms.forEach((room) => {
+                const card = document.createElement("div");
+                card.className = "col-md-6";
+
+                card.innerHTML = `
+        <div class="card room-card">
+            <div class="card-header d-flex justify-content-between align-items-start">
+                <div>
+                    <h5 class="card-title mb-2">${room.name}</h5>
+                    <span class="badge ${room.type === "teorica" ? "bg-primary" : "bg-secondary"}">
+                        ${room.type === "teorica" ? "Teórica" : "Prática"}
+                    </span>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-outline-secondary me-2" onclick="editRoom('${room.id}')">
+                        <i class="bi bi-pencil-fill"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deleteRoom('${room.id}')">
+                        <i class="bi bi-trash3-fill"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <p><strong>Capacidade:</strong> ${room.capacity} pessoas</p>
+                ${room.equipment.length
+                        ? `<p class="mb-1"><strong>Equipamentos:</strong></p>
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            ${room.equipment
+                            .map((eq) => `<span class="badge bg-light text-dark border">${getEquipmentLabel(eq)}</span>`)
+                            .join("")}
+                        </div>`
+                        : `<p class="mb-3"><strong>Equipamentos:</strong></p>
+                        <p class="text-muted m-0">Nenhum equipamento</p>`}
+            </div>
+        </div>
+        `;
+                roomsContainer.appendChild(card);
+            });
+        };
+
+        const getEquipmentLabel = (eq) => {
+            const labels = {
+                microfone: "Microfone",
+                projetor: "Projetor",
+                tv: "TV",
+                computadores: "Computadores",
+                "sistema-som": "Sistema de Som",
+                "quadro-branco": "Quadro Branco",
+            };
+            return labels[eq] || eq;
+        };
+
+        const deleteRoom = (id) => {
+            rooms = rooms.filter((room) => room.id !== id);
+            alert("Sala removida com sucesso!");
+            updateRoomList();
+            resetForm();
+        };
+
+        const editRoom = (id) => {
+            const room = rooms.find(r => r.id === id);
+            if (!room) return;
+
+            document.getElementById("name").value = room.name;
+            document.getElementById("location").value = room.location;
+            document.getElementById("capacity").value = room.capacity;
+            document.getElementById("type").value = room.type;
+
+            selectedEquipments = [...room.equipment];
+            document.querySelectorAll(".equipment-btn").forEach(btn => {
+                btn.classList.toggle("active", selectedEquipments.includes(btn.dataset.value));
+            });
+
+            formTitle.textContent = "Editar Sala";
+            submitBtn.textContent = "Salvar Alterações";
+
+            if (!document.getElementById("cancelEditBtn")) {
+                const cancelBtn = document.createElement("button");
+                cancelBtn.type = "button";
+                cancelBtn.id = "cancelEditBtn";
+                cancelBtn.className = "btn btn-secondary w-100 mt-2";
+                cancelBtn.textContent = "Cancelar edição";
+                cancelBtn.onclick = resetForm;
+                form.appendChild(cancelBtn);
+            }
+
+            editingRoomId = id;
+        };
+
+        const resetForm = () => {
+            form.reset();
+            form.classList.remove("was-validated");
+            selectedEquipments = [];
+            document.querySelectorAll(".equipment-btn").forEach((btn) => btn.classList.remove("active"));
+            editingRoomId = null;
+
+            formTitle.textContent = "Nova Sala";
+            submitBtn.textContent = "Cadastrar Sala";
+
+            const cancelBtn = document.getElementById("cancelEditBtn");
+            if (cancelBtn) cancelBtn.remove();
+        };
+
+        document.querySelectorAll(".equipment-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const value = btn.dataset.value;
+                if (selectedEquipments.includes(value)) {
+                    selectedEquipments = selectedEquipments.filter((e) => e !== value);
+                    btn.classList.remove("active");
+                } else {
+                    selectedEquipments.push(value);
+                    btn.classList.add("active");
+                }
+            });
+        });
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (!form.checkValidity()) {
+                form.classList.add("was-validated");
+                return;
+            }
+
+            const name = document.getElementById("name").value.trim();
+            const location = document.getElementById("location").value.trim();
+            const capacity = document.getElementById("capacity").value.trim();
+            const type = document.getElementById("type").value;
+
+            if (editingRoomId) {
+                const room = rooms.find(r => r.id === editingRoomId);
+                room.name = name;
+                room.capacity = parseInt(capacity);
+                room.type = type;
+                room.location = location;
+                room.equipment = [...selectedEquipments];
+                alert("Sala atualizada com sucesso!");
+            } else {
+                const newRoom = {
+                    id: Date.now().toString(),
+                    name,
+                    location,
+                    capacity: parseInt(capacity),
+                    type,
+                    equipment: [...selectedEquipments],
+                };
+                rooms.push(newRoom);
+                alert("Sala cadastrada com sucesso!");
+            }
+
+            resetForm();
+            updateRoomList();
+        });
+
+        updateRoomList();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</body>
+
+</html>
