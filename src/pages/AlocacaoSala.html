@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alocação de Salas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #1068a6;
+            color: #ffffff;
+        }
+
+        header .text-dark,
+        header .text-primary,
+        header .bi-arrow-left {
+            color: #ffffff !important;
+        }
+
+        header .text-muted {
+            color: #cccccc !important;
+        }
+
+        main.container,
+        header .container {
+            background-color: transparent !important;
+        }
+
+        .card,
+        .modal-content {
+            background-color: #ffffff;
+            color: #212529;
+        }
+
+        .card-header,
+        .card-title,
+        .modal-body label,
+        .modal-body p strong {
+            color: #212529;
+        }
+
+        .modal-header.bg-primary {
+            background-color: #0d6efd !important;
+        }
+
+        .modal-title,
+        .modal-header .btn-close-white {
+            color: #fff;
+        }
+
+        .modal-body .text-muted {
+            color: #6c757d !important;
+        }
+
+        .badge.bg-light {
+            background-color: #f8f9fa !important;
+            color: #212529 !important;
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+
+<body class="py-5">
+    <header>
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="mb-4 d-flex">
+                <a href="../../index.html" class="fs-3 mt-2 me-4 text-center cursor-pointer text-dark text-decoration-none">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+
+                <div class="tit">
+                    <h1 class="display-5 text-primary">Alocação de Salas</h1>
+                    <small class="text-muted">Escolha uma sala ou deixe o sistema sugerir automaticamente</small>
+                </div>
+            </div>
+            <a href="BuscaInteligente.html" class="btn btn-primary rounded-pill h-25">
+                Alocação Inteligente
+            </a>
+        </div>
+    </header>
+
+    <main class="container py-4">
+        <div class="card mb-4">
+            <div class="card-header fw-bold">Filtros</div>
+            <div class="card-body row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Capacidade Mínima</label>
+                    <input type="number" id="capacityFilter" class="form-control" placeholder="Ex: 20">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Tipo de Atividade</label>
+                    <select id="typeFilter" class="form-select">
+                        <option value="all">Todos</option>
+                        <option value="teorica">Teórica</option>
+                        <option value="pratica">Prática</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="roomsContainer" class="row g-4"></div>
+
+        <div id="noResults" class="text-center text-muted mt-5 d-none">
+            Nenhuma sala encontrada com os filtros aplicados.
+        </div>
+    </main>
+
+    <div class="modal fade" id="timeSlotModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Alocar Sala</h5>
+                    <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted mb-3" id="selectedRoomInfo"></p>
+                    <form id="allocationForm">
+                        <div class="mb-3">
+                            <label class="form-label">Data</label>
+                            <input type="date" id="date" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nome da Atividade</label>
+                            <input type="text" id="activityName" class="form-control"
+                                placeholder="Ex: Workshop de React" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nome do Palestrante</label>
+                            <input type="text" id="speakerName" class="form-control" placeholder="Seu nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Número de Participantes</label>
+                            <input type="number" id="participants" class="form-control" placeholder="Ex: 30" required>
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <script>
+        const rooms = [
+            { id: 1, name: "Sala A101", floor: 1, capacity: 40, type: "teorica", equipment: ["projector", "microphone"] },
+            { id: 2, name: "Sala B203", floor: 2, capacity: 30, type: "pratica", equipment: ["tv", "sound"] },
+            { id: 3, name: "Sala C305", floor: 3, capacity: 80, type: "teorica", equipment: ["videoconf", "microphone", "whiteboard"] },
+            { id: 4, name: "Laboratório D401", floor: 4, capacity: 25, type: "pratica", equipment: ["computer", "sound", "tv"] },
+        ];
+
+        const equipmentLabels = {
+            projector: "Projetor 4K",
+            sound: "Sistema de Som",
+            videoconf: "Videoconferência",
+            tv: "TV",
+            computer: "Computadores",
+            microphone: "Microfones",
+            whiteboard: "Quadro Branco",
+        };
+
+        const roomsContainer = document.getElementById("roomsContainer");
+        const noResults = document.getElementById("noResults");
+
+        const dateInput = document.getElementById("date");
+        const today = new Date().toISOString().split("T")[0];
+        dateInput.min = today;
+
+        function abrirModal(roomId) {
+            selectedRoom = rooms.find(r => r.id === roomId);
+            selectedRoomInfo.textContent = `${selectedRoom.name} — ${selectedRoom.capacity} pessoas (${selectedRoom.type})`;
+
+            const today = new Date().toISOString().split("T")[0];
+            document.getElementById("date").min = today;
+
+            modal.show();
+        }
+
+        function renderRooms() {
+            const capacityFilter = parseInt(document.getElementById("capacityFilter").value) || 0;
+            const typeFilter = document.getElementById("typeFilter").value;
+
+            const filteredRooms = rooms.filter(room =>
+                room.capacity >= capacityFilter && (typeFilter === "all" || room.type === typeFilter)
+            );
+
+            roomsContainer.innerHTML = "";
+
+            if (filteredRooms.length === 0) {
+                noResults.classList.remove("d-none");
+                return;
+            } else {
+                noResults.classList.add("d-none");
+            }
+
+            filteredRooms.forEach(room => {
+                const card = document.createElement("div");
+                card.className = "col-md-6 col-lg-4";
+                card.innerHTML = `
+          <div class="card h-100 shadow-sm hover-shadow" onclick="abrirModal(${room.id})" style="cursor:pointer;">
+            <div class="card-header d-flex justify-content-between align-items-start">
+              <div>
+                <h5 class="card-title mb-0">${room.name}</h5>
+                <small class="text-muted">Andar ${room.floor}</small>
+              </div>
+              <span class="badge text-bg-success">Disponível</span>
+            </div>
+            <div class="card-body">
+              <p class="mb-1"><strong>Capacidade:</strong> ${room.capacity} pessoas</p>
+              <p class="mb-1"><strong>Tipo:</strong> ${room.type.charAt(0).toUpperCase() + room.type.slice(1)}</p>
+              <p class="mb-2"><strong>Equipamentos:</strong></p>
+              ${room.equipment.map(eq => `
+                <span class="badge bg-light text-dark border me-1">${equipmentLabels[eq] || eq}</span>
+              `).join("")}
+            </div>
+          </div>
+        `;
+                roomsContainer.appendChild(card);
+            });
+        }
+
+        document.getElementById("capacityFilter").addEventListener("input", renderRooms);
+        document.getElementById("typeFilter").addEventListener("change", renderRooms);
+
+        let selectedRoom = null;
+        const modal = new bootstrap.Modal(document.getElementById("timeSlotModal"));
+        const selectedRoomInfo = document.getElementById("selectedRoomInfo");
+
+        function abrirModal(roomId) {
+            selectedRoom = rooms.find(r => r.id === roomId);
+            selectedRoomInfo.textContent = `${selectedRoom.name} — ${selectedRoom.capacity} pessoas (${selectedRoom.type})`;
+            modal.show();
+        }
+
+        document.getElementById("allocationForm").addEventListener("submit", e => {
+            e.preventDefault();
+            alert(`Sala "${selectedRoom.name}" alocada com sucesso!`);
+            modal.hide();
+            e.target.reset();
+        });
+
+        renderRooms();
+    </script>
+</body>
+
+</html>

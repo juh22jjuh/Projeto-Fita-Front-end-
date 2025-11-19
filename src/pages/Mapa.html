@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa do Evento</title>
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            background-color: #1068a6;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        header {
+            color: #ffffff;
+            padding: 1rem 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+
+        .mapa-container {
+            position: relative;
+            width: 60%;
+            max-width: 600px;
+            border-radius: 12px;
+        }
+
+        .map-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .marcador {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .marcador:hover {
+            transform: scale(1.2);
+            z-index: 10000;
+        }
+
+        .marcador .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            line-height: 1.2;
+            white-space: nowrap;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .marcador .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+        }
+
+        .marcador:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        .anfiteatro {
+            background-color: #7e2cb1;
+        }
+
+        .palco {
+            background-color: #b22222;
+        }
+
+        .aulas {
+            background-color: #ff7f00;
+        }
+
+        .expositores {
+            background-color: #ffd700;
+        }
+
+        .estacionamento {
+            background-color: #7fbf7f;
+        }
+
+        .alimentacao {
+            background-color: #00a3e0;
+        }
+
+        .legenda {
+            background-color: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            width: 30%;
+            max-width: 450px;
+        }
+
+        .legenda h2 {
+            margin-top: 0;
+        }
+
+        .legenda ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .legenda li {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .legenda .cor {
+            display: inline-block;
+            width: 25px;
+            height: 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        footer {
+            background-color: #0b4e7e;
+            color: #ffffff;
+            padding: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .mapa-container {
+                width: 90%;
+            }
+
+            .legenda {
+                width: 90%;
+                max-width: none;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Mapa do Evento</h1>
+    </header>
+
+    <main>
+        <div class="mapa-container">
+            <img class="map-img" src="../assets/mapa.png" alt="Mapa do evento">
+
+            <div class="marcador anfiteatro" style="top: 30%; left: 50%;">
+                <span class="tooltip">Anfiteatro: local de palestras e apresentações principais.</span>
+            </div>
+
+            <div class="marcador palco" style="top: 40%; left: 45%;">
+                <span class="tooltip">Palco: apresentações artísticas e abertura do evento.</span>
+            </div>
+
+            <div class="marcador aulas" style="top: 65%; left: 66%;">
+                <span class="tooltip">Salas de aula: oficinas e minicursos.</span>
+            </div>
+
+            <div class="marcador aulas" style="top: 35%; left: 66%;">
+                <span class="tooltip">Salas de aula: atividades e workshops.</span>
+            </div>
+
+            <div class="marcador expositores" style="top: 70%; left: 35%;">
+                <span class="tooltip">Área dos expositores: empresas e startups.</span>
+            </div>
+
+            <div class="marcador estacionamento" style="top: 70%; left: 78%;">
+                <span class="tooltip">Estacionamento: alunos, professores e expositores.</span>
+            </div>
+
+            <div class="marcador alimentacao" style="top: 45%; left: 63%;">
+                <span class="tooltip">Área de alimentação: food trucks e lanchonetes.</span>
+            </div>
+        </div>
+
+        <section class="legenda">
+            <h2>Legenda</h2>
+            <ul>
+                <li><span class="cor anfiteatro"></span> Anfiteatro</li>
+                <li><span class="cor palco"></span> Palco</li>
+                <li><span class="cor aulas"></span> Área de salas de aulas</li>
+                <li><span class="cor expositores"></span> Expositores</li>
+                <li><span class="cor estacionamento"></span> Estacionamento alunos, professores e expositores</li>
+                <li><span class="cor alimentacao"></span> Área de alimentação</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        document.querySelectorAll('.marcador').forEach(marcador => {
+            marcador.addEventListener('click', () => {
+                console.log(`Marcador clicado: ${marcador.classList[1]}`);
+            });
+        });
+    </script>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+</body>
+
+</html>
